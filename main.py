@@ -10,15 +10,22 @@
 ################################################################
 
 # These Constants define the gravitational pull for earth and the moon
+# These Constants define the gravitational pull for earth and the moon
 EARTH_GRAVITY: float = 32.17  # feet/second/second
 MOON_GRAVITY: float = 5.3  # feet/second/second
 
-# This variable gets the users weight on earth
-userWeightOnEarth: float = float(input("Enter your weight on Earth (in pounds): "))
+# Get the user's weight on Earth
+valid_input = False
+while not valid_input:
+    try:
+        userWeightOnEarth = float(input("Enter your weight on Earth (in pounds): "))
+        valid_input = True
+    except ValueError:
+        print("Please enter a valid integer weight in pounds.")
 
-# This variable gets the users weight on earth
+# Calculate the user's weight on the Moon
 userWeightOnMoon: float = (userWeightOnEarth / EARTH_GRAVITY) * MOON_GRAVITY
 
-# display the results
+# Display the results
 print(f"Your weight on Earth is: {userWeightOnEarth}")
-print(f"Your weight on moon is: {userWeightOnMoon}")
+print(f"Your weight on the moon is: {userWeightOnMoon:.2f}")
